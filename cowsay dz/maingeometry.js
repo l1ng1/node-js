@@ -23,5 +23,3 @@ export class Geometry{
 
 }
 
-
-module.exports = Geometry;
