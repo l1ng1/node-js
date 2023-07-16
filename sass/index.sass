@@ -1,0 +1,114 @@
+
+$primary-color : #dcf7ff;
+$secondary-color: rgba(45, 45, 53, 0.764);
+$button-color: rgba(254, 71, 5, 0.835);
+$background-color: rgba(142, 132, 132, 0.585);
+$text-color: rgb(101, 98, 98);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.top {
+  width: 100%;
+  background: $primary-color;
+  padding-top: 50px;
+}
+
+.header, .menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.menu {
+  width: 50%;
+}
+
+.item-list {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: sans-serif;
+  list-style: none;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.text {
+  width: 16%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  h1 {
+    font-family: sans-serif;
+  }
+
+  p {
+    color: gray;
+    font-size: 18px;
+    font-family: sans-serif;
+  }
+
+  img {
+    width: 200%;
+  }
+}
+
+.box {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.bott {
+  width: 100%;
+  background-color: $secondary-color;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.bot-menu {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  font-size: 30px;
+  list-style: none;
+  align-self: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: $button-color;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 20px;
+  padding: 3px 10px 3px 10px;
+}
+
+.tour {
+  background-color: $background-color;
+  color: $text-color;
+  border: none;
+  border-radius: 8px;
+  padding: 4px 7px;
+}
+
+.logo {
+  width: 10%;
+}
