@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>Регистрация</title>
+</head>
+<body>
+    <div class="block">
+        <form action="/confirm" method="post">
+            <input type="text" name="login" placeholder="Имя пользователя">
+            <input type="password" name="passw" placeholder="пароль">
+            <input type="password" name="passwChek" placeholder="повторите пароль">
+            <input type="email" name="email" placeholder="ваша почта">
+            <div class="captcha">
+                <img src="%src%" alt="">
+                <input type="text" name="captcha" placeholder="введите текст с капчи">
+            </div>
+            <input type="submit" value="Зарегистрироваться">
+        </form>
+    </div>
+
+<style>
+    .block{
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .block form{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+    .block form div{
+        text-align: center;
+    }
+
+    .block form input{
+        margin-bottom: 20px;
+    }
+</style>
+
+</body>
+</html>
