@@ -4,7 +4,6 @@ let sendBtn = document.getElementById('send');
 
 sendBtn.onclick = sendMessage();
 
-    // Обновляем список id на странице при новом подключении или отключении
     socket.on('updateConnections', (connections) => {
       const connectionsList = document.getElementById('connectionsList');
       connectionsList.innerHTML = '';
@@ -15,7 +14,6 @@ sendBtn.onclick = sendMessage();
       });
     });
 
-    // Принимаем приватное сообщение и выводим его на странице
     socket.on('privateMessage', (data) => {
       const privateMessageLog = document.getElementById('privateMessageLog');
       const messageDiv = document.createElement('div');

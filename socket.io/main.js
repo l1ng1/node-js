@@ -21,7 +21,6 @@ io.on('connection', (socket) => {
   io.emit('updateConnections', connections);
 
   socket.on('privateMessage', (data) => {
-    // Отправляем приватное сообщение по указанному id
     io.to(data.recipient).emit('privateMessage', {
       sender: socket.id,
       message: data.message,
