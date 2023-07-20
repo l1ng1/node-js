@@ -3,12 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const html2rtf = require('html-to-rtf');
 const { convertRtfToHtml } = require('html-to-text');
-
-
-
-
-const {RtfConverter} = require("read-rtf");
-const {RtfParser} = require('read-rtf');
+const rtfParser = require('rtf-parser');
 
 
 
@@ -51,35 +46,48 @@ function saveTextToFile(ev, text) {
 
 function openTextToFile(ev) {
     let fname = dialog.showOpenDialogSync().toString();
-    convertRtfToHtmlString(fname,(err,data)=>{
-        if(err) console.arror('На 59 строке ОШИБКА!!!!!'); return;
-        console.log(data);
-    })
-
+    convertRtfToHtmlString(fname);
 
 }
 
 
 
-function convertRtfToHtmlString(filePath, callback) {
-    fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err) {
-        callback(err, null);
-        return;
+
+
+
+function convertRtfToHtmlString(rtfFilePath) {
+  try {
+    const rtfBuffer = fs.readFileSync(rtfFilePath);
+    const parsedResult = rtfParser.parse(rtfBuffer);
+    console.log(parsedResult);
+    let htmlString = '';
+
+    parsedResult.content.forEach((element) => {
+      if (element.type === 'group') {
+        htmlString += convertGroupToHtml(element);
       }
-      console.log(data);
-      const parser = new RtfParser();
-      parser.on('group', (group) => {
-        // Передача структуры RTF в html-to-text для преобразования
-        convertRtfToHtml(group, (err, html) => {
-          if (err) {
-            callback(err, null);
-            return;
-          }
-          callback(null, html);
-        });
-      });
-  
-      parser.write(data);
     });
+
+    return htmlString;
+  } catch (error) {
+    console.error('Error converting RTF to HTML:', error);
+    return null;
   }
+}
+
+
+
+function convertGroupToHtml(group) {
+  let htmlString = '';
+
+  group.content.forEach((element) => {
+    if (element.type === 'text') {
+      htmlString += element.content;
+    } else if (element.type === 'group') {
+      htmlString += convertGroupToHtml(element);
+    }
+   
+  });
+
+  return htmlString;
+}

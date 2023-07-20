@@ -27,6 +27,6 @@ saveBtn.onclick = () => {
 
 
 openBtn.onclick= ()=>{
-   let a = window.backend.load();
-   mainArea.innerHTML = a;
+   let htmlcode = window.backend.load();
+   mainArea.innerHTML = htmlcode;
 }
