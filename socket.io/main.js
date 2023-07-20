@@ -1,11 +1,16 @@
 import express from 'express';
 import http from 'http';
 import { Server as Io } from 'socket.io';
+import path from 'path';
 
 const app = express();
 const server = http.createServer(app);
 const io =  new Io(server);
 
+app.get('/', (req, res) => {
+  const fname = path.join(process.cwd(), 'index.html');
+  res.sendFile(fname);
+});
 
 let connections = [];
 
@@ -33,6 +38,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log('Server started on http://localhost:3000');
+server.listen(3001, () => {
+  console.log('Server started on http://localhost:3001');
 });
